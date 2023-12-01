@@ -31,13 +31,19 @@ class BrowseCore extends Component {
         <TableHead>
           <TableRow>
             <TableCell>
+              Sl No
+            </TableCell>
+            <TableCell>
               Bill Name
+            </TableCell>
+            <TableCell>
+              Bill Date
             </TableCell>
             <TableCell>
               Amount
             </TableCell>
             <TableCell>
-              Date
+              Receipt Date
             </TableCell>
             <TableCell>
               Preview
@@ -82,12 +88,18 @@ class BrowseCore extends Component {
             <TableCell />
           </TableRow>
           {
-            this.props.expenses.map(expense => (
+            this.props.expenses.map((expense, index) => (
               <TableRow
                 key={expense.id}
               >
+                <TableCell>
+                  {this.props.expenses.length - index}
+                </TableCell>
                 <TableCell onClick={this.handleBillClick(expense.billId)}>
                   {expense.bill.name}
+                </TableCell>
+                <TableCell>
+                  {expense.bill.billDate}
                 </TableCell>
                 <TableCell>
                   {expense.amount}
