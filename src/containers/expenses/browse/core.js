@@ -34,6 +34,9 @@ class BrowseCore extends Component {
               Sl No
             </TableCell>
             <TableCell>
+              Id
+            </TableCell>
+            <TableCell>
               Bill Name
             </TableCell>
             <TableCell>
@@ -94,6 +97,9 @@ class BrowseCore extends Component {
               >
                 <TableCell>
                   {this.props.expenses.length - index}
+                </TableCell>
+                <TableCell>
+                  {expense.id}
                 </TableCell>
                 <TableCell onClick={this.handleBillClick(expense.billId)}>
                   {expense.bill.name}
