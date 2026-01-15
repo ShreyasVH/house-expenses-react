@@ -1,6 +1,5 @@
 import { Component } from 'react';
-import {Grid, Paper, styled, Table, TableBody, TableCell, TableHead, TableRow} from "@mui/material";
-import {Link} from "react-router-dom";
+import { styled, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 
 const styles = {
   bill: {

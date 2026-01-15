@@ -1,4 +1,4 @@
-import {Component, useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import { getExpensesByFilter } from '../../../apiHelpers/expense';
 import { getCompanies, getCategories, getSubCategories } from '../../../apiHelpers/bill';
 import BrowseCore from './core';

@@ -1,6 +1,6 @@
-import {Component, useEffect, useState} from "react";
-import {getBillById, getBillsByFilter} from "../../../apiHelpers/bill";
-import {getUrlParam} from "../../../utils";
+import { useEffect, useState } from "react";
+import { getBillById } from "../../../apiHelpers/bill";
+import { getUrlParam } from "../../../utils";
 import DetailsCore from './core';
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +20,7 @@ export default function Details() {
         setBill(billResponse.data.data);
         setLoaded(true);
       })
-  }, []);
+  }, [billId]);
 
   const addReceipt = () => {
     navigate('/expenses/create?billId=' + billId);

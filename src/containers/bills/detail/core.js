@@ -1,6 +1,6 @@
 import {Component} from "react";
 import {Grid, Paper} from "@mui/material";
-import {Button} from "@mui/material/index";
+import {Button} from "@mui/material";
 
 const styles = {
   expense: {

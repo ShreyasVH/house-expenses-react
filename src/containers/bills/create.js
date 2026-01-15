@@ -1,10 +1,9 @@
-import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material/index';
-import {Component, useEffect, useState} from 'react';
+import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { useEffect, useState } from 'react';
 
 import { getCategories, getSubCategories, getCompanies, saveBill } from '../../apiHelpers/bill';
 import { isSuccessfulResponse, uploadFile } from '../../utils/api';
 import { copyObject } from '../../utils';
-import {getExpensesByFilter} from "../../apiHelpers/expense";
 import {useNavigate} from "react-router-dom";
 
 export default function Create () {
@@ -91,116 +90,120 @@ export default function Create () {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <Box>
-          <TextField
-            name={'name'}
-            label={'Name'}
-            variant={'outlined'}
-            value={bill.name}
-            onChange={handleNameChange}
-            fullWidth
-            InputLabelProps={{
-              shrink: true
-            }}
-          />
+      <>
+        {
+          loaded && <>
+            <form onSubmit={handleSubmit}>
+          <Box>
+            <TextField
+              name={'name'}
+              label={'Name'}
+              variant={'outlined'}
+              value={bill.name}
+              onChange={handleNameChange}
+              fullWidth
+              InputLabelProps={{
+                shrink: true
+              }}
+            />
 
-          <TextField
-            name={'amount'}
-            label={'Amount'}
-            variant={'outlined'}
-            fullWidth
-            type={'number'}
-            value={bill.amount}
-            onChange={handleAmountChange}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-
-          <TextField
-            name={'bill'}
-            label={'Bill'}
-            variant={'outlined'}
-            fullWidth
-            type={'file'}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            onChange={handleBillFileChange}
-          />
-
-          <TextField
-            name={'bill-date'}
-            label={'Bill Date'}
-            variant={'outlined'}
-            fullWidth
-            type={'date'}
-            value={bill.billDate}
-            onChange={handleBillDateChange}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-
-          <FormControl fullWidth>
-            <InputLabel shrink>Category</InputLabel>
-            <Select
-              name={'category'}
+            <TextField
+              name={'amount'}
+              label={'Amount'}
               variant={'outlined'}
               fullWidth
-              value={bill.categoryId}
-              onChange={handleCategoryChange}
-            >
-              {categories.map(category => (
-                <MenuItem value={category.id} key={'category_' + category.id}>
-                  {category.name}
-                </MenuItem>
-              ))}
+              type={'number'}
+              value={bill.amount}
+              onChange={handleAmountChange}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
 
-            </Select>
-          </FormControl>
-
-          <FormControl fullWidth>
-            <InputLabel shrink>Sub Category</InputLabel>
-            <Select
-              name={'subCategory'}
+            <TextField
+              name={'bill'}
+              label={'Bill'}
               variant={'outlined'}
               fullWidth
-              value={bill.subCategoryId}
-              onChange={handleSubCategoryChange}
-            >
-              {subCategories.map(subCategory => (
-                <MenuItem value={subCategory.id} key={'subCategory_' + subCategory.id}>
-                  {subCategory.name}
-                </MenuItem>
-              ))}
+              type={'file'}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={handleBillFileChange}
+            />
 
-            </Select>
-          </FormControl>
-
-          <FormControl fullWidth>
-            <InputLabel shrink>Company</InputLabel>
-            <Select
-              name={'company'}
+            <TextField
+              name={'bill-date'}
+              label={'Bill Date'}
               variant={'outlined'}
               fullWidth
-              value={bill.companyId}
-              onChange={handleCompanyChange}
-            >
-              {companies.map(company => (
-                <MenuItem value={company.id} key={'company_' + company.id}>
-                  {company.name}
-                </MenuItem>
-              ))}
+              type={'date'}
+              value={bill.billDate}
+              onChange={handleBillDateChange}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
 
-            </Select>
-          </FormControl>
+            <FormControl fullWidth>
+              <InputLabel shrink>Category</InputLabel>
+              <Select
+                name={'category'}
+                variant={'outlined'}
+                fullWidth
+                value={bill.categoryId}
+                onChange={handleCategoryChange}
+              >
+                {categories.map(category => (
+                  <MenuItem value={category.id} key={'category_' + category.id}>
+                    {category.name}
+                  </MenuItem>
+                ))}
 
-          <Button color={'primary'} variant={'contained'} type={'submit'}>Submit</Button>
-        </Box>
-      </form>
-    </>
+              </Select>
+            </FormControl>
+
+            <FormControl fullWidth>
+              <InputLabel shrink>Sub Category</InputLabel>
+              <Select
+                name={'subCategory'}
+                variant={'outlined'}
+                fullWidth
+                value={bill.subCategoryId}
+                onChange={handleSubCategoryChange}
+              >
+                {subCategories.map(subCategory => (
+                  <MenuItem value={subCategory.id} key={'subCategory_' + subCategory.id}>
+                    {subCategory.name}
+                  </MenuItem>
+                ))}
+
+              </Select>
+            </FormControl>
+
+            <FormControl fullWidth>
+              <InputLabel shrink>Company</InputLabel>
+              <Select
+                name={'company'}
+                variant={'outlined'}
+                fullWidth
+                value={bill.companyId}
+                onChange={handleCompanyChange}
+              >
+                {companies.map(company => (
+                  <MenuItem value={company.id} key={'company_' + company.id}>
+                    {company.name}
+                  </MenuItem>
+                ))}
+
+              </Select>
+            </FormControl>
+
+            <Button color={'primary'} variant={'contained'} type={'submit'}>Submit</Button>
+          </Box>
+        </form>
+          </>
+        }
+      </>
   );
 }

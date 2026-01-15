@@ -1,5 +1,5 @@
-import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material/index';
-import {Component, useState} from 'react';
+import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { useState } from 'react';
 
 import { saveExpense } from '../../apiHelpers/expense';
 import { isSuccessfulResponse, uploadFile } from '../../utils/api';
