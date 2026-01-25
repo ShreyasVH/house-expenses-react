@@ -1,4 +1,4 @@
-import {Component, useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import {getBillsByFilter, getCategories, getCompanies, getSubCategories} from '../../../apiHelpers/bill';
 import BrowseCore from './core';
 import { useNavigate } from "react-router-dom";
